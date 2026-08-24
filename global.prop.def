@@ -1,0 +1,407 @@
+
+
+# Globals
+# Masm files
+file.patterns.asm=*.asm;*.s;*.A51;*.A66;*.A251;*.inc;*.sct
+filter.asm=Assembler (asm)|$(file.patterns.asm)|
+lexer.$(file.patterns.asm)=asm
+
+# c/cpp
+file.patterns.hpp=*.h;*.hh;*.hpp;*.hxx
+file.patterns.cpp=*.c;*.cc;*.cpp;*.cxx;*.h;*.hh;*.hpp;*.hxx;*.ipp;*.sma;*.ini
+file.patterns.cplusplus=*.cc;*.cpp;*.cxx
+
+file.patterns.java=*.java;*.jad;*.pde
+file.patterns.javafx=*.fx
+file.patterns.test=*.pln;*.inc;*.t
+file.patterns.js=*.js;*.es
+file.patterns.cs=*.cs
+file.patterns.rc=*.rc;*.rc2;*.dlg
+file.patterns.idl=*.idl;*.odl
+file.patterns.flash=*.as;*.asc;*.jsfl
+file.patterns.ch=*.ch;*.chf;*.chs
+file.patterns.vala=*.vala
+file.patterns.c.like=$(file.patterns.cpp);$(file.patterns.cs);$(file.patterns.idl);$(file.patterns.java);$(file.patterns.js);$(file.patterns.flash);$(file.patterns.ch);$(file.patterns.vala)
+
+shbang.tcc=cpp
+shbang.tinycc=cpp
+
+filter.cpp=C/C++ (c cc cpp cxx cs vala h hh hxx hpp ipp dlg rc rc2 mak)|\
+$(file.patterns.cpp);$(file.patterns.cs);$(file.patterns.rc);$(file.patterns.vala);*.mak;make*|
+filter.java=Java (java)|*.java|
+filter.js=JavaScript (js es)|$(file.patterns.js)|
+filter.idl=IDL (idl odl)|$(file.patterns.idl)|
+filter.test=SilkTest (pln inc t)|$(file.patterns.test)|
+filter.flash=Flash (as asc jsfl)|$(file.patterns.flash)|
+filter.ch=Ch (ch chf chs)|$(file.patterns.ch)|
+
+lexer.$(file.patterns.java)=cpp
+lexer.$(file.patterns.javafx)=cpp
+lexer.$(file.patterns.cpp)=cpp
+lexer.$(file.patterns.rc)=cpp
+lexer.$(file.patterns.idl)=cpp
+lexer.$(file.patterns.cs)=cpp
+lexer.$(file.patterns.js)=cpp
+lexer.$(file.patterns.test)=cpp
+lexer.$(file.patterns.flash)=cpp
+lexer.$(file.patterns.ch)=cpp
+lexer.$(file.patterns.vala)=cpp
+
+# html
+file.patterns.web=*.html;*.htm;*.asp;*.shtml;*.htd;*.jsp
+file.patterns.php=*.php3;*.phtml;*.php
+file.patterns.html=$(file.patterns.web);$(file.patterns.php);*.htt;*.cfm;*.tpl;*.dtd;*.hta
+file.patterns.vxml=*.vxml
+file.patterns.xml=*.xml;*.xsl;*.svg;*.xul;*.xsd;*.dtd;*.xslt;*.axl;*.xrc;*.rdf
+file.patterns.docbook=*.docbook
+file.patterns.mako=*.mak;*.mako
+
+lexer.$(file.patterns.html)=hypertext
+lexer.$(file.patterns.vxml)=hypertext
+lexer.$(file.patterns.xml)=xml
+lexer.$(file.patterns.docbook)=hypertext
+lexer.$(file.patterns.mako)=hypertext
+
+filter.web=Web (html htm asp shtml css xml docbook jsp)|$(file.patterns.web);*.css;*.xml;*.docbook|
+filter.php=PHP (php php3 phtml)|$(file.patterns.php)|
+
+# other files
+file.patterns.props=*.properties;*.session;*.ini;*.inf;*.reg;*.url;*.cfg;*.cnf;*.aut
+file.patterns.text=*.txt;*.log;*.lst;*.doc;*.diz;*.nfo;*.md
+file.patterns.batch=*.bat;*.cmd;*.nt
+file.patterns.diff=*.diff;*.patch
+file.patterns.make=makefile;Makefile;*.mak;configure
+
+filter.properties=Properties (ini inf reg url cfg cnf)|$(file.patterns.props)|
+filter.text=Text (txt log lst doc diz nfo)|$(file.patterns.text);make*|
+filter.batch=Batch (bat cmd nt)|$(file.patterns.batch)|
+filter.diff=Difference (diff patch)|$(file.patterns.diff)|
+
+lexer.$(file.patterns.props)=props
+lexer.$(file.patterns.batch)=batch
+lexer.*.err=errorlist
+lexer.$(file.patterns.make)=makefile
+lexer.*.iface=makefile
+lexer.$(file.patterns.diff)=diff
+
+configclass.type=cpp;asm;txt
+
+configclass.cpp.title=C/C++ Editor files
+configclass.cpp.element=32:Text;4:Number;10:Operator, Block, Brackets;1:Block Comment;\
+  2:Line Comment;5:Keyword;6:String;11:Identifier;9:Preprocessor;7:Character;34:Matching Braces;\
+  35:Mismatched Braces;16:User Keyword / Label;12:Incomplete String;86:Inactive Text
+
+configclass.asm.title=Asm Editor files
+configclass.asm.element=32:Default;1:Comment;2:Number;3:String;4:Operator;5:Identifier;\
+  6:CPU Instruction;7:FPU Instruction;9:Assembler Directive;10:Assembler Directive Operand;\
+  11:Comment Block (e.g. GNU);12:Character/String (single quote);8:Register / User Keywords / Label
+
+configclass.txt.title=Editor Text files
+configclass.txt.element=32:Default
+
+font.monospace.txt=Consolas
+
+# templates specification
+template.cpp="Header","// Header:\r\n// File Name: |\r\n// Author:\r\n// Date:\r\n";"for","for(|;;)\r\n{\r\n}";\\
+"while","while (|)\r\n{\r\n}";"continue","continue;";"if","if (|)";"function","void function(|)\r\n{\r\n\r\n}\r\n";\\
+"struct","struct | \r\n{\r\n\r\n};\r\n";"fpointer_type","typedef int (* |F)();\r\n";\\
+"do","do\r\n{\r\n\t// TODO: enter the block content here\r\n\t\r\n\t|\r\n} while ();\r\n";\\
+"enum","enum |\r\n{\r\n\t\r\n};\r\n";"void","void | ();\r\n";"#if","#if |\r\n\r\n#endif";\\
+"#define","#define |";"switch","switch (|)\r\n{\r\n\tcase:\r\n\t\tbreak;\r\n\tcase:\r\n\t\tbreak;\r\n\tdefault:\r\n\t\tbreak;\r\n}";\\
+"ifelse","if (|)\r\n{\r\n}\r\nelse\r\n{\r\n}";"#include","#include "
+
+# Sizes and visibility in edit pane
+line.margin.visible=1
+line.margin.width=4
+margin.width=16
+buffered.draw=1
+use.palette=0
+
+highlight.matchingbraces=1
+
+# Caret, Selection and Line Styles (Pure Black Dark Theme)
+caret.period=500
+view.whitespace=0
+view.indentation.whitespace=1
+view.indentation.guides=1
+view.indentation.examine=3
+highlight.indentation.guides=1
+caret.additional.blinks=0
+indentation.lines.tocheck=1000
+
+selection.fore=#FFFFFF
+selection.back=#264F78
+caret.fore=#00FFAA
+caret.back=#000000
+caret.width=2
+
+caret.line.back=#1A1A1A
+caret.line.back.alpha=256
+caretline.visible=1
+
+edge.column=80
+edge.mode=0
+edge.colour=#222222
+braces.check=1
+braces.sloppy=1
+selection.alpha=256
+
+find.replace.regexp.posix=1
+
+# Indentation
+tabsize=4
+use.tabs=0
+indent.automatic=1
+indent.opening=0
+indent.closing=0
+backspace.unindents=0
+
+# Folding
+fold=1
+fold.compact=1
+fold.flags=16
+fold.symbols=1
+fold.comment=1
+fold.preprocessor=1
+fold.cpp=1
+fold.num.to.save=500
+
+lexer.cpp.track.preprocessor=0
+
+eol.auto=1
+clear.before.execute=0
+caret.policy.xslop=1
+caret.policy.width=20
+caret.policy.xstrict=0
+caret.policy.xeven=0
+caret.policy.xjumps=0
+caret.policy.yslop=1
+caret.policy.lines=1
+caret.policy.ystrict=1
+caret.policy.yeven=1
+caret.policy.yjumps=0
+
+code.page=65001
+
+chars.alpha=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+chars.numeric=0123456789
+chars.accented=ŠšŒœŸÿÀàÁáÂâÃãÄäÅåÆæÇçÈèÉéÊêËëÌìÍíÎîÏïÐðÑñÒòÓóÔôÕõÖØøÙùÚúÛûÜüÝýÞþßöµ
+
+# Base Fonts & Colors
+font.base=font:Consolas,size:10
+font.small=font:Consolas,size:9
+font.smaller=font:Consolas,size:8
+font.comment=font:Consolas,size:10
+font.code.comment.box=$(font.comment)
+font.code.comment.line=$(font.comment)
+font.code.comment.doc=$(font.comment)
+font.code.comment.nested=$(font.comment)
+font.text=font:Consolas,size:10
+font.text.comment=font:Consolas,size:10
+font.embedded.base=font:Consolas,size:10
+font.embedded.comment=font:Consolas,size:10
+font.monospace=font:Consolas,size:10
+
+# Dark Palette Colors
+colour.code.comment.box=fore:#55FF55,back:#000000
+colour.code.comment.line=fore:#55FF55,back:#000000
+colour.code.comment.doc=fore:#55FF55,back:#000000
+colour.code.comment.nested=fore:#55FF55,back:#000000
+colour.text.comment=fore:#55FF55,back:#000000
+colour.other.comment=fore:#55FF55,back:#000000
+colour.embedded.comment=fore:#55FF55,back:#000000
+colour.embedded.js=fore:#E0E0E0,back:#000000
+colour.notused=back:#400000
+
+colour.number=fore:#FFD700
+colour.keyword=fore:#00D7FF
+colour.string=fore:#FF8C00
+colour.char=fore:#FF007F
+colour.operator=fore:#FFFFFF
+colour.preproc=fore:#D700FF
+colour.error=fore:#FF3333,back:#000000
+colour.tip=fore:#FFFFFF,back:#1A1A1A
+
+monospaced.font.cpp=1
+monospaced.font.asm=1
+monospaced.font.txt=1
+
+# Global default styles
+style.*.32=font:Consolas,size:10,fore:#E0E0E0,back:#000000
+linenumber=1
+style.*.33=back:#121212,fore:#707070,font:Consolas,size:9
+style.*.34=fore:#00FF00,back:#003366,bold
+style.*.35=fore:#FF0000,back:#000000,bold
+style.*.36=
+style.*.37=fore:#333333,back:#000000
+style.*.39=back:#222222,fore:#E0E0E0,$(font.small)
+style.*.38=$(style.*.32)
+
+### Pure Black Settings for C/C++
+style.cpp.32=font:Consolas,size:10,fore:#E0E0E0,back:#000000
+style.cpp.0=fore:#555555,back:#000000
+style.cpp.1=fore:#55FF55,back:#000000,font:Consolas,size:10,italics
+style.cpp.2=fore:#55FF55,back:#000000,font:Consolas,size:10,italics
+style.cpp.3=fore:#55FF55,back:#000000,font:Consolas,size:10,italics
+style.cpp.4=fore:#FFD700,back:#000000
+style.cpp.5=fore:#00D7FF,back:#000000,bold
+style.cpp.6=fore:#FF8C00,back:#000000
+style.cpp.7=fore:#FF007F,back:#000000
+style.cpp.8=fore:#FFD700,back:#000000
+style.cpp.9=fore:#D700FF,back:#000000,bold
+style.cpp.10=fore:#FFFFFF,back:#000000,bold
+style.cpp.11=fore:#E0E0E0,back:#000000
+style.cpp.12=fore:#FF3333,back:#330000,eolfilled
+style.cpp.13=fore:#FF8C00,back:#000000,eolfilled
+style.cpp.14=fore:#FF007F,back:#000000,eolfilled
+style.cpp.15=fore:#55FF55,back:#000000,font:Consolas,size:10,italics
+style.cpp.16=fore:#00FFAA,back:#000000,bold
+style.cpp.17=fore:#00D7FF,back:#000000
+style.cpp.18=fore:#FF3333,back:#000000
+style.cpp.20=fore:#FF8C00,back:#000000,eolfilled
+style.cpp.21=fore:#55FF55,back:#000000,eolfilled
+
+# Matching Braces
+style.cpp.34=fore:#FFFFFF,back:#0055AA,bold
+style.cpp.35=fore:#FF0000,back:#000000,bold
+
+# Inactive Code (#if 0)
+style.cpp.86=fore:#555555,back:#000000
+style.cpp.64=fore:#444444,back:#000000
+style.cpp.65=fore:#2E7D32,back:#000000
+style.cpp.66=fore:#2E7D32,back:#000000
+style.cpp.67=fore:#2E7D32,back:#000000
+style.cpp.68=fore:#8A7500,back:#000000
+style.cpp.69=fore:#006A7A,back:#000000
+style.cpp.70=fore:#994C00,back:#000000
+style.cpp.71=fore:#99004C,back:#000000
+style.cpp.72=fore:#555555,back:#000000
+style.cpp.73=fore:#6A007A,back:#000000
+style.cpp.74=fore:#666666,back:#000000
+style.cpp.75=fore:#666666,back:#000000
+style.cpp.76=fore:#555555,back:#000000
+style.cpp.77=fore:#2E7D32,back:#000000
+style.cpp.78=fore:#2E7D32,back:#000000
+style.cpp.79=fore:#555555,back:#000000
+style.cpp.80=fore:#555555,back:#000000
+style.cpp.81=fore:#555555,back:#000000
+style.cpp.82=fore:#555555,back:#000000
+style.cpp.84=fore:#994C00,back:#000000
+style.cpp.85=fore:#2E7D32,back:#000000
+
+braces.cpp.style=10
+
+# Print Settings
+print.syntax.coloring=1
+print.magnification=-1
+print.margins=1500,1000,1000,1500
+print.footer.format=$(FilePath)
+print.header.style=font:Consolas,size:10
+print.footer.style=font:Consolas,size:9
+
+# User Shortcuts
+user.shortcuts=\
+Ctrl+Shift+V|IDM_PASTEANDDOWN|\
+Ctrl+PageUp|IDM_PREVFILE|\
+Ctrl+PageDown|IDM_NEXTFILE|
+
+# Asm Editor styles (Pure Black)
+font.monospace.asm=Consolas
+style.asm.32=font:Consolas,size:10,fore:#E0E0E0,back:#000000
+style.asm.1=font:Consolas,size:10,fore:#55FF55,back:#000000,italics
+style.asm.2=font:Consolas,size:10,fore:#FFD700,back:#000000
+style.asm.3=font:Consolas,size:10,fore:#FF8C00,back:#000000
+style.asm.4=font:Consolas,size:10,fore:#FFFFFF,back:#000000,bold
+style.asm.5=font:Consolas,size:10,fore:#E0E0E0,back:#000000
+style.asm.6=font:Consolas,size:10,fore:#00D7FF,back:#000000,bold
+style.asm.7=font:Consolas,size:10,fore:#00D7FF,back:#000000,bold
+style.asm.9=font:Consolas,size:10,fore:#D700FF,back:#000000,bold
+style.asm.10=font:Consolas,size:10,fore:#00FFAA,back:#000000
+style.asm.11=font:Consolas,size:10,fore:#55FF55,back:#000000,italics
+style.asm.12=font:Consolas,size:10,fore:#FF007F,back:#000000
+style.asm.8=font:Consolas,size:10,fore:#00FFAA,back:#000000
+
+# Editor Text files (Pure Black)
+font.monospace.txt=Consolas
+style.txt.32=font:Consolas,size:10,fore:#E0E0E0,back:#000000
+usemonofont.txt=1
+
+function.scanner.project=1
+function.scanner.files=1
+function.scanner.modules=1
+
+# Comments specification
+comment.block.cpp=//
+comment.block.at.line.start.cpp=1
+comment.block.at.line.start.asm=1
+comment.stream.start.cpp=/*
+comment.stream.end.cpp=*/
+comment.box.start.cpp=/*
+comment.box.middle.cpp= *
+comment.box.end.cpp= */
+
+comment.block.ch=//~
+comment.stream.start.ch=/*
+comment.stream.end.ch=*/
+comment.box.start.ch=/*
+comment.box.middle.ch= *
+comment.box.end.ch= */
+
+word.chars.cxx=$(chars.alpha)$(chars.numeric)$(chars.accented)_#
+word.characters.$(file.patterns.cpp)=$(word.chars.cxx)
+calltip.cpp.word.characters=$(chars.alpha)$(chars.numeric)_
+
+fold.cpp.comment.explicit=0
+word.characters.$(file.patterns.javafx)=$(word.chars.cxx)$-
+
+file.patterns.c.except.cpp=$(file.patterns.cs);$(file.patterns.idl);*.java;$(file.patterns.flash);$(file.patterns.ch)
+statement.indent.$(file.patterns.c.except.cpp)=5 case default do else for if while
+statement.indent.$(file.patterns.cpp)=5 case default do else for if private protected public while
+statement.end.$(file.patterns.c.like)=10 ;
+statement.lookback.$(file.patterns.c.like)=20
+block.start.$(file.patterns.c.like)=10 {
+block.end.$(file.patterns.c.like)=10 }
+
+autocomplete.cpp.start.characters=.(>,
+autocompleteword.automatic=0
+autocomplete.choose.single=1
+autocomplete.MaxFileSize=4000000
+
+cc.autolist=1
+cc.highlightsyntax=1
+cc.showparameters=1
+cc.triggerlist=1
+cc.triggernumchars=3
+cc.enter.as.fillup=0
+
+cc.autoupdbi=1
+cc.updbiinterval=3
+cc.timer.interval=3000
+
+autosave=0
+autosave.interval=5
+
+styling.within.preprocessor=1
+preprocessor.symbol.$(file.patterns.cpp)=#
+preprocessor.start.$(file.patterns.cpp)=if ifdef ifndef
+preprocessor.middle.$(file.patterns.cpp)=else elif
+preprocessor.end.$(file.patterns.cpp)=endif
+lexer.flagship.styling.within.preprocessor=1
+
+# Keywords for C/C++
+keywordclass.cpp=alignas alignof and and_eq asm auto bitand bitor bool break case catch char char16_t char32_t class compl \
+const constexpr const_cast continue decltype default delete do double dynamic_cast else enum explicit export extern false \
+float for friend goto if inline int long mutable namespace new noexcept not not_eq nullptr operator or or_eq private protected \
+public register reinterpret_cast return short signed sizeof static static_assert static_cast struct switch template this thread_local \
+throw true try typedef typeid typename union unsigned using virtual void volatile wchar_t while xor xor_eq
+
+keywords.$(file.patterns.cpp)=$(keywordclass.cpp)
+
+monospaced.font.batch=1
+font.monospace.batch=Consolas
+font.monospace.cpp=Consolas
+
+technology=1
+style.cpp.usealpha=1
+style.cpp.alpha=50
+selection.multipaste=1
