@@ -2,7 +2,8 @@
 
 A clean, high-contrast, pure black (`#000000`) theme configuration for **Keil MDK-ARM (µVision)** designed to reduce eye strain and improve code readability during embedded firmware development.
 
----
+---<img width="961" height="751" alt="image" src="https://github.com/user-attachments/assets/7b927ab9-5fb8-48dc-9524-e2039dac4c7d" />
+
 
 ## 🎨 Color Palette & Syntax Highlights
 
